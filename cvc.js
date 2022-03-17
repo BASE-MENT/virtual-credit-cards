@@ -1,51 +1,57 @@
-'use strict'
+"use strict";
 
-var State = require('dover')
-var Observ = require('observ')
-var value = require('observ-value')
-var pipe = require('value-pipe')
+const State = require("dover");
+const Observ = require("observ");
+const value = require("observ-value");
+const pipe = require("value-pipe");
 
-var h = require('virtual-dom/h')
-var changeEvent = require('value-event/change')
-var extend = require('xtend')
-var numeric = require('numeric-pattern')
-var card = require('creditcards').card
-var cvc = require('creditcards').cvc
+const h = require("virtual-dom/h");
+const changeEvent = require("value-event/change");
+const extend = require("xtend");
+const numeric = require("numeric-pattern");
+const card = require("creditcards").card;
+const cvc = require("creditcards").cvc;
 
-var TYPE = require('./type')
-var NAME = 'cc-csc'
+const TYPE = require("./type");
+const NAME = "cc-csc";
 
-module.exports = CardNumberInput
+module.exports = CardNumberInput;
 
-function CardNumberInput (data) {
-  data = data || {}
+function CardNumberInput(data) {
+  data = data || {};
 
   return State({
-    value: Observ(data.value || ''),
+    value: Observ(data.value || ""),
     channels: {
-      change: change
-    }
-  })
+      change: change,
+    },
+  });
 }
 
-function change (state, data) {
-  pipe(card.parse, state.value.set)(data[NAME])
+function change(state, data) {
+  pipe(card.parse, state.value.set)(data[NAME]);
 }
 
-CardNumberInput.validate = function validate (state, type) {
-  var code = value(state.value)
-  return cvc.isValid(code, type)
-}
+CardNumberInput.validate = function validate(state, type) {
+  const code = value(state.value);
+  return cvc.isValid(code, type);
+};
 
-CardNumberInput.render = function render (state, options) {
-  return h('input', extend({
-    name: NAME,
-    autocomplete: NAME,
-    type: TYPE,
-    placeholder: 'CVC',
-    pattern: numeric,
-    maxLength: 4,
-    value: state.value,
-    'ev-event': changeEvent(state.channels.change)
-  }, options))
-}
+CardNumberInput.render = function render(state, options) {
+  return h(
+    "input",
+    extend(
+      {
+        name: NAME,
+        autocomplete: NAME,
+        type: TYPE,
+        placeholder: "CVC",
+        pattern: numeric,
+        maxLength: 4,
+        value: state.value,
+        "ev-event": changeEvent(state.channels.change),
+      },
+      options
+    )
+  );
+};

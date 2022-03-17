@@ -1,19 +1,19 @@
-'use strict'
+"use strict";
 
-var jsonMarkup = require('json-markup')
-var css = require('insert-styles')
-var toVdom = require('html-to-vdom')({
-  VNode: require('virtual-dom/vnode/vnode'),
-  VText: require('virtual-dom/vnode/vtext')
-})
+const jsonMarkup = require("json-markup");
+const css = require("insert-styles");
+const toVdom = require("html-to-vdom")({
+  VNode: require("virtual-dom/vnode/vnode"),
+  VText: require("virtual-dom/vnode/vtext"),
+});
 
 module.exports = {
-  render: render
-}
+  render: render,
+};
 
-function render (data) {
-  data = JSON.parse(JSON.stringify(data))
-  return toVdom(jsonMarkup(data))
+function render(data) {
+  data = JSON.parse(JSON.stringify(data));
+  return toVdom(jsonMarkup(data));
 }
 
 css(`.json-markup {
@@ -36,4 +36,4 @@ css(`.json-markup {
 }
 .json-markup-number {
   color: blue;
-}`)
+}`);

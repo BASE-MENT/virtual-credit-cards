@@ -1,1 +1,1 @@
-module.exports = require('is-android') ? 'tel' : 'text'
+module.exports = require("is-android") ? "tel" : "text";
