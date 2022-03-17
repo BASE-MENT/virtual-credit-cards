@@ -2,7 +2,6 @@
 
 > Credit card form components built with virtual-dom
 
-
 ## Install
 
 ```
@@ -15,21 +14,21 @@ $ npm install --save virtual-credit-cards
 $ npm run example
 ```
 
-An example form (*example.js*) will open up in your default browser with all three components connected.
+An example form (_example.js_) will open up in your default browser with all three components connected.
 
 ## Usage
 
 virtual-credit-cards comes with inputs for:
 
-* Card numbers
-* Expiration (MM/YY)
-* CVC
+- Card numbers
+- Expiration (MM/YY)
+- CVC
 
 ```js
-var NumberInput = require('virtual-credit-cards/number')
+var NumberInput = require("virtual-credit-cards/number");
 
-var state = NumberInput()
-NumberInput.render(state())
+var state = NumberInput();
+NumberInput.render(state());
 //=> VTree
 ```
 
@@ -43,7 +42,7 @@ Returns the observable number input state. `state.value` is an observable repres
 
 #### `NumberInput.render(state, [options])` -> `object`
 
-Renders a state object into a virtual DOM tree. 
+Renders a state object into a virtual DOM tree.
 
 #### `NumberInput.validate(state, [types])` -> `boolean`
 
@@ -55,7 +54,7 @@ Type: `array`
 Default: `[]`
 
 An array of [allowed card types](https://github.com/bendrucker/creditcards-types#card-types). If no value is provided, a valid card of any type will be valid.
- 
+
 ### Expiration
 
 #### `ExpirationInput()` -> `function`
@@ -64,7 +63,7 @@ Returns the observable number input state. `state.value` is an observable repres
 
 #### `ExpirationInput.render(state, [options])` -> `object`
 
-Renders a state object into a virtual DOM tree. 
+Renders a state object into a virtual DOM tree.
 
 #### `ExpirationInput.validate(state)` -> `boolean`
 
@@ -78,11 +77,11 @@ Returns the observable number input state. `state.value` is an observable repres
 
 #### `CvcInput.render(state, [options])` -> `object`
 
-Renders a state object into a virtual DOM tree. 
+Renders a state object into a virtual DOM tree.
 
 #### `CvcInput.validate(state, [type])` -> `boolean`
 
-Validates the CVC state. 
+Validates the CVC state.
 
 ##### type
 
@@ -90,7 +89,6 @@ Type: `string`
 Default: `null`
 
 If a [card type](https://github.com/bendrucker/creditcards-types#card-types) is provided, the validator will check that the provided CVC is valid for that card type.
-
 
 ## License
 
